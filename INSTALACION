@@ -1,0 +1,33 @@
+Nos permiten aislar diferentes versiones de Python y sus librerías
+
+Facilitan el despliegue de aplicaciones
+
+Gestionan las incompatibilidades entre librerías
+https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+https://protostar.space/why-you-need-python-environments-and-how-to-manage-them-with-conda
+# Para asegurarte tener el mismo entorno con las mismas versiones de paquetes, importa el entorno
+conda env create -f py38ml.yml
+# Al instalar el entorno, activarlo con "conda activate py38ml" y ejecutar los siguientes comandos
+python -m spacy download es_core_news_sm
+setx PYSPARK_PYTHON ipython # Necesitamos esta variable de entorno establecida
+crear entorno desde 0 (podrían no coincidir las versiones de los paquetes)
+conda create --name py38ml python=3.8.10
+activate py38ml
+conda install -c conda-forge numpy=1.21.1 matplotlib=3.4.2 pandas=1.3.0 scipy=1.7.0 scikit-learn=1.0.2
+conda install -c conda-forge jupyter=1.0.0
+conda install -c conda-forge jupyterlab=3.0.16
+conda install -c conda-forge nb_conda_kernels=2.3.1
+conda install -c conda-forge scikit-image=0.18.2
+conda install -c conda-forge opencv=4.5.2 xgboost=1.4.0 seaborn=0.11.1
+conda install -c conda-forge shap=0.39.0 eli5=0.11.0
+conda install -c conda-forge nltk=3.6.2 spacy=3.1.1 graphviz=2.48.0
+conda install -c conda-forge pydotplus=2.0.2 dtreeviz=1.3.1 category_encoders=2.2.2
+pip install imbalanced-learn==0.9
+pip install pyspark==3.3.0
+# Al instalar el entorno, activarlo con "conda activate py38ml" y ejecutar los siguientes comandos
+python -m spacy download es_core_news_sm
+setx PYSPARK_PYTHON ipython # Necesitamos esta variable de
+# exportar entorno
+conda env export --no-builds > py38ml.yml
+# borrar entorno
+conda remove --name py38ml --all
